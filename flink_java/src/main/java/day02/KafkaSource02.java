@@ -32,6 +32,8 @@ public class KafkaSource02 {
                 .setBootstrapServers("linux001:9092") // 指定bootstrapserver
                 .setValueOnlyDeserializer(new SimpleStringSchema()) // 指定value的反序列化器
 
+                .setProperty("enable.auto.commit", "true") // 自动提交偏移量
+
                 .build(); // 建造
 
 
