@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="doit37_flink" />
+        <module name="flink_java" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="new_t2" target="1.8" />
+      <module name="test_1" target="1.8" />
+      <module name="test_2" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
