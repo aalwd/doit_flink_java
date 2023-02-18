@@ -1,6 +1,7 @@
 package day02;
 
 
+import day02.udfs.QueryCategoryNameFromDB;
 import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
@@ -29,7 +30,7 @@ public class Execrise01 {
 
         DataStreamSource<String> source = env.socketTextStream("linux001", 8888);
 
-        SingleOutputStreamOperator<String> mapped = source.map(new MappingInformation());
+        SingleOutputStreamOperator<String> mapped = source.map(new QueryCategoryNameFromDB());
 
         mapped.print();
 
@@ -71,13 +72,16 @@ public class Execrise01 {
             while(rs.next()) {
                 category = rs.getString(1);
             }
-
+            rs.close();
             return id + "," +cid + "," + money + "," + category;
         }
 
         @Override
         public void close() throws Exception {
             // 释放连接
+            if(ps != null) {
+                ps.close();
+            }
             if(conn != null) {
                 conn.close();
             }
