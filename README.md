@@ -12,5 +12,11 @@ and some execises
 
 这些类中, 自定义实现类, 实现了map以及flatmap的底层方法的抽象接口, 和抽象类
 
+(day03) :
+
+对key相同的进行分区: 
+
+[KeyByDemo.java](flink_java%2Fsrc%2Fmain%2Fjava%2Fday03%2FKeyByDemo.java)
 
 
+[KeyByDemo02.java](flink_java%2Fsrc%2Fmain%2Fjava%2Fday03%2FKeyByDemo02.java)

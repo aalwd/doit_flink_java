@@ -32,6 +32,7 @@ public class CustomizedMap2 {
         };
 
         // 名称, 输出类型, 以及操作的实现类
+        // TypeInformation 类 当类型中有泛型的时候, 会帮助抽取泛型类
         SingleOutputStreamOperator<String> mapped = source.transform("map", TypeInformation.of(String.class), new MyStreamMap(mapFunction));
 
 
