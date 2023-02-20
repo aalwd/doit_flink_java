@@ -21,12 +21,20 @@ public class CustomPrintSink01 {
     }
 
 
+    // 自定义扩展sink方法实现类, 首先要继承RichSinkFunction(增强类) 或者SinkFunction
     public static class MyPrintSink extends RichSinkFunction<String> {
 
         private int index ;
+
+        /**
+         *
+         * @param parameters The configuration containing the parameters attached to the contract.
+         * @throws Exception
+         */
         @Override
         public void open(Configuration parameters) throws Exception {
             super.open(parameters);
+            // 获得当前task运行线程的运行环境的索引
             index = getRuntimeContext().getIndexOfThisSubtask();
 
 
@@ -34,6 +42,9 @@ public class CustomPrintSink01 {
 
         /**
          * sink中的数据, 来一条, 调用一次invoke方法
+         * 自己制定将数据传输过来是时候, 对数据做怎样的操作,
+         * 不仅仅可以将数据输出, 同时也可以将数据进行存储到数据库, 或者对数据进行加工
+         * 封装等 各种操作
          * @param value The input record.
          * @param context Additional context about the input record.
          * @throws Exception

@@ -9,7 +9,6 @@ import org.apache.flink.streaming.api.functions.source.SourceFunction;
 /**
  * Flink的是source按照是否有界: 有限/界的的数据流 和无限/界的数据流
  * Flink的source可以是并行执行的: 非并行的source和并行的source
- *
  * 一下是非并行的有限数据流
  */
 public class CustomerSource01 {

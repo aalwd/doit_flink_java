@@ -38,7 +38,6 @@ public class KafkaSource01 {
 
 
         // 调用transformation 也是默认使用环境最大并行度, 如果不设置的话,
-        // 所以
         SingleOutputStreamOperator<String> map = source.map(String::toUpperCase);
 
 
