@@ -25,6 +25,8 @@ public class KeyByDemo05 {
         //山东省,济南市,3000
         //山东省,青岛市,2000
         //河北省,廊坊市,1000
+        //河北省,石家庄,1000
+//        山东省,青岛市,2888
         DataStreamSource<String> source = env.socketTextStream("linux001", 8888);
 
         SingleOutputStreamOperator<Tuple3<String,String,Integer>> tpStream = source.map(line -> {
