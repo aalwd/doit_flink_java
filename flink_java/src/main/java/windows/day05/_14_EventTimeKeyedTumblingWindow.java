@@ -8,6 +8,7 @@ import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.datastream.WindowedStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
@@ -26,6 +27,7 @@ public class _14_EventTimeKeyedTumblingWindow {
 
         DataStreamSource<String> source = env.socketTextStream("linux001", 8888);
         //1000,spark,1
+        //4999,spark,1000
         //1000,hive,2
         //2000,spark,3
 
@@ -46,7 +48,7 @@ public class _14_EventTimeKeyedTumblingWindow {
 
 
         KeyedStream<Tuple2<String, Integer>, Integer> res = wordCount.keyBy(e -> e.f1);
-        WindowedStream<Tuple2<String, Integer>, Integer, TimeWindow> windowedStream = res.window(TumblingProcessingTimeWindows.of(Time.seconds(5)));
+        WindowedStream<Tuple2<String, Integer>, Integer, TimeWindow> windowedStream = res.window(TumblingEventTimeWindows.of(Time.seconds(5)));
 
         SingleOutputStreamOperator<Tuple2<String, Integer>> sum = windowedStream.sum(1);
 
