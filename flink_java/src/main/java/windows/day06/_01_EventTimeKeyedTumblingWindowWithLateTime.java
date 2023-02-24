@@ -1,4 +1,4 @@
-package windows.day05;
+package windows.day06;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
@@ -25,7 +25,7 @@ import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
  * 如果生产WaterMark的DataStream只有一个分区，那么只有该分区的WaterMark大于等于窗口结束时间的闭区间，窗口就触发
  *
  */
-public class _16_EventTimeKeyedTumblingWindowWithLateTime {
+public class _01_EventTimeKeyedTumblingWindowWithLateTime {
 
     public static void main(String[] args) throws Exception {
 
